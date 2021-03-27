@@ -28,6 +28,7 @@ namespace itis {
             front_->next = new_element;
             front_ = new_element;
             ++size_;
+
         }
     }
 
