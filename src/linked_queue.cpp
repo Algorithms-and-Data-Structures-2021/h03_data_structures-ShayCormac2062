@@ -4,21 +4,52 @@
 
 namespace itis {
 
-void LinkedQueue::Enqueue(Element e) {
-  // TODO: напишите здесь свой код ...
-}
+    void LinkedQueue::Enqueue(Element e) {
+        // TODO: напишите здесь свой код ...
+        auto new_node = new SinglyNode(e, nullptr);
+        new_node->next = back_;
+        back_ = new_node;
+        if (back_->next == nullptr) front_ = new_node;
+        size_++;
+    }
 
-void LinkedQueue::Dequeue() {
-  if (size_ == 0) {
-    throw std::logic_error("could not dequeue from empty queue");
-  }
+    void LinkedQueue::Dequeue() {
+        if (size_ == 0) {
+            throw std::logic_error("could not dequeue from empty queue");
+        }
 
-  // TODO: напишите здесь свой код ...
-}
+        // TODO: напишите здесь свой код ...
 
-void LinkedQueue::Clear() {
-  // TODO: напишите здесь свой код ...
-}
+        auto current_node = back_;
+        if (current_node->next != nullptr){
+            while (current_node->next != front_) {
+                current_node = current_node->next;
+            }
+            delete front_;
+            current_node->next = nullptr;
+            front_ = current_node;
+        } else {
+            delete front_;
+            front_ = nullptr;
+            back_ = nullptr;
+        }
+
+        size_--;
+    }
+
+    void LinkedQueue::Clear() {
+        // TODO: напишите здесь свой код ...
+
+        for (auto current_node = back_; current_node != nullptr;) {
+            auto del_node = current_node;
+            current_node = current_node->next;
+            delete del_node;
+        }
+
+        size_ = 0;
+        front_ = nullptr;
+        back_ = nullptr;
+    }
 
 // === РЕАЛИЗОВАНО ===
 
