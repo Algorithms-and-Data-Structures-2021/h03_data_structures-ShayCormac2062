@@ -22,11 +22,13 @@ namespace itis {
         auto *new_node = new DoublyNode(e, nullptr, nullptr);
         if (size_ == 0) {
             front_ = new_node;
+            ++size_;
         } else {
-            front_->next = new_node;
+            auto new_element = new DoublyNode(e, front_, nullptr);
+            front_->next = new_element;
+            front_ = new_element;
+            ++size_;
         }
-        front_ = new_node;
-        ++size_;
     }
 
     void LinkedDequeue::Dequeue() {
