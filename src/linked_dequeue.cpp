@@ -19,16 +19,14 @@ namespace itis {
 
     void LinkedDequeue::EnqueueFront(Element e) {
         // TODO: напишите здесь свой код ...
-        auto *new_node = new DoublyNode(e, nullptr, nullptr);
-        if (size_ == 0) {
-            front_ = new_node;
-            ++size_;
-        } else {
-            auto new_element = new DoublyNode(e, front_, nullptr);
-            front_->next = new_element;
-            front_ = new_element;
-            ++size_;
-
+        if (size_ == 0){
+            Enqueue(e);
+        }
+        else{
+            auto new_elem = new DoublyNode(e, front_, nullptr);
+            front_->next = new_elem;
+            front_ = new_elem;
+            size_++;
         }
     }
 
